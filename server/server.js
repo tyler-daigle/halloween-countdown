@@ -1,8 +1,11 @@
 const express = require("express");
 const cors = require("cors");
 const app = express();
-const text = "Days Until Halloween: 31";
-const numDays = 290;
+const port = 80;
+
+const numberDaysTillHalloween = require("./halloween");
+
+const numDays = numberDaysTillHalloween();
 
 const svg = `
 <svg version="1.1"
@@ -40,11 +43,10 @@ const svg = `
 
 app.use(cors());
 
-app.get("/", (req, res) => {
-  console.log("Got request");
+app.get("/", (req, res) => {  
   res.set("Content-Type", "image/svg+xml");
   res.set("Vary", "Accept-Encoding");
   res.send(svg);
 });
 
-app.listen(9000, () => console.log("Listening on port 9000"));
+app.listen(port, () => console.log(`Listening on port ${port}`));
