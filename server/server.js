@@ -1,7 +1,7 @@
 const express = require("express");
 const cors = require("cors");
 const app = express();
-const port = 80;
+const port =  process.env.PORT || 8080;
 
 const numberDaysTillHalloween = require("./halloween");
 
