@@ -4,6 +4,8 @@ const port = process.env.PORT || 8080;
 const numberDaysTillHalloween = require("./halloween");
 
 
+app.set("etag", false);
+
 app.get("/", (req, res) => {
 
   const numDays = numberDaysTillHalloween();
