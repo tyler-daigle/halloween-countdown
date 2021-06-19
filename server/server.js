@@ -4,9 +4,7 @@ const port = process.env.PORT || 8080;
 const numberDaysTillHalloween = require("./halloween");
 
 
-app.set("etag", false);
-
-app.get("/", (req, res) => {
+app.get("/:param?", (req, res) => {
 
   const numDays = numberDaysTillHalloween();
 
@@ -53,6 +51,7 @@ class="halloween-svg">
   
   res.set("Content-Type", "image/svg+xml");
   res.set("Cache-Control", "no-store");
+  res.set("Cache-Control", "no-cache");
   res.set("Vary", "Accept-Encoding");
   res.send(svg);
 });
