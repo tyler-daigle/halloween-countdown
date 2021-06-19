@@ -50,8 +50,7 @@ class="halloween-svg">
 /**********END OF SVG ***********************************************/
   
   res.set("Content-Type", "image/svg+xml");
-  res.set("Cache-Control", "no-store");
-  res.set("Cache-Control", "no-cache");
+  res.set("Cache-Control", "no-store");  
   res.set("Vary", "Accept-Encoding");
   res.send(svg);
 });
