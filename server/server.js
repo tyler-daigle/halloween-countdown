@@ -1,18 +1,19 @@
 const express = require("express");
 const app = express();
 const port = process.env.PORT || 8080;
+const cors = require("cors");
 const numberDaysTillHalloween = require("./halloween");
 
+app.use(cors());
 
 app.get("/:param?", (req, res) => {
-
   const numDays = numberDaysTillHalloween();
 
-/********************************************************************
- * 
- *  The handmade SVG
- * 
- ********************************************************************/
+  /********************************************************************
+   *
+   *  The handmade SVG
+   *
+   ********************************************************************/
   const svg = `
 <svg version="1.1"
 baseProfile="full"
@@ -47,10 +48,10 @@ class="halloween-svg">
 </svg>
 `;
 
-/**********END OF SVG ***********************************************/
-  
+  /**********END OF SVG ***********************************************/
+
   res.set("Content-Type", "image/svg+xml");
-  res.set("Cache-Control", "no-store");  
+  res.set("Cache-Control", "no-store");
   res.set("Vary", "Accept-Encoding");
   res.send(svg);
 });
